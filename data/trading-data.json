@@ -1,0 +1,105 @@
+﻿{
+  "todayCalls": [
+    {
+      "id": "reliance-2026-02-12",
+      "symbol": "RELIANCE",
+      "exchange": "NSE: RELIANCE",
+      "side": "BUY",
+      "confidence": "HIGH",
+      "postedAt": "9:00 AM",
+      "entry": 2847.5,
+      "target": 2920,
+      "stopLoss": 2810,
+      "riskReward": "1:1.93",
+      "analysis": [
+        "Breakout above INR 2,840 with strong participation.",
+        "RSI at 62 indicates controlled bullish momentum.",
+        "MACD crossover confirmed on 15-min setup."
+      ]
+    },
+    {
+      "id": "hdfcbank-2026-02-12",
+      "symbol": "HDFC BANK",
+      "exchange": "NSE: HDFCBANK",
+      "side": "BUY",
+      "confidence": "HIGH",
+      "postedAt": "9:12 AM",
+      "entry": 1645.3,
+      "target": 1670,
+      "stopLoss": 1630,
+      "riskReward": "1:1.61",
+      "analysis": [
+        "Price reclaimed VWAP and held opening range low.",
+        "Volume expansion near support zone.",
+        "Banking index relative strength remains positive."
+      ]
+    },
+    {
+      "id": "tcs-2026-02-12",
+      "symbol": "TCS",
+      "exchange": "NSE: TCS",
+      "side": "SELL",
+      "confidence": "MEDIUM",
+      "postedAt": "9:22 AM",
+      "entry": 3882,
+      "target": 3825,
+      "stopLoss": 3912,
+      "riskReward": "1:1.90",
+      "analysis": [
+        "Failed breakout at prior day high.",
+        "Weak breadth in IT peers during first hour.",
+        "15-min lower highs suggest intraday distribution."
+      ]
+    }
+  ],
+  "tradeHistory": [
+    {
+      "id": "reliance-2026-02-12",
+      "dateISO": "2026-02-12",
+      "displayDate": "12-Feb-26",
+      "stock": "RELIANCE",
+      "side": "BUY",
+      "entry": 2847.5,
+      "target": 2920,
+      "stopLoss": 2810,
+      "high": 2927.8,
+      "low": 2843.2,
+      "result": "TARGET HIT",
+      "returnPct": 2.55
+    },
+    {
+      "id": "hdfc-2026-02-11",
+      "dateISO": "2026-02-11",
+      "displayDate": "11-Feb-26",
+      "stock": "HDFC BANK",
+      "side": "BUY",
+      "entry": 1645.3,
+      "target": 1670,
+      "stopLoss": 1630,
+      "high": 1672.4,
+      "low": 1642.1,
+      "result": "TARGET HIT",
+      "returnPct": 1.5
+    },
+    {
+      "id": "tcs-2026-02-10",
+      "dateISO": "2026-02-10",
+      "displayDate": "10-Feb-26",
+      "stock": "TCS",
+      "side": "BUY",
+      "entry": 3850,
+      "target": 3910,
+      "stopLoss": 3820,
+      "high": 3875.2,
+      "low": 3812.5,
+      "result": "STOP LOSS",
+      "returnPct": -0.78
+    }
+  ],
+  "traffic": {
+    "totalHits": 0,
+    "perPage": {},
+    "daily": {},
+    "lastUpdated": ""
+  }
+}

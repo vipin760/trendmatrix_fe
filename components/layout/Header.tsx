@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import DarkModeToggle from "./DarkModeToggle";
 
 export default function Header() {
@@ -8,10 +9,10 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <div className="font-bold text-xl">IntradayResearch</div>
         <nav className="hidden md:flex gap-6 text-sm font-medium">
-          <a href="/">Home</a>
-          <a href="/intraday">Intraday</a>
-          <a href="/performance">Performance</a>
-          <a href="/history">History</a>
+          <Link href="/">Home</Link>
+          <Link href="/intraday">Intraday</Link>
+          <Link href="/performance">Performance</Link>
+          <Link href="/history">History</Link>
         </nav>
         <DarkModeToggle />
       </div>
