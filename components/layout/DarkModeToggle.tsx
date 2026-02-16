@@ -1,33 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function getInitialTheme() {
-  if (typeof window === "undefined") return false;
-  const saved = localStorage.getItem("theme");
-  if (saved === "dark") return true;
-  if (saved === "light") return false;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+function getInitialDark() {
+  if (typeof document === "undefined") return false;
+  return document.documentElement.classList.contains("dark");
 }
 
 export default function DarkModeToggle() {
-  const [dark, setDark] = useState(getInitialTheme);
+  const [dark, setDark] = useState(getInitialDark);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem("theme", dark ? "dark" : "light");
-  }, [dark]);
+  const toggleTheme = () => {
+    const next = !dark;
+    setDark(next);
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
+  };
 
   return (
     <button
       type="button"
-      onClick={() => setDark((prev) => !prev)}
+      onClick={toggleTheme}
       className="rounded-lg p-2 transition hover:bg-gray-200 dark:hover:bg-gray-700"
-      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      title={dark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label="Toggle theme"
+      title="Toggle theme"
     >
-      {dark ? "Light" : "Dark"}
+      Theme
     </button>
   );
 }
-
