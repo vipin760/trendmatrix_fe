@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import SelectionFramework from "@/components/intraday/SelectionFramework";
 import { fetchPredictions, hitTraffic, type PredictionItem } from "@/lib/client/trading-api";
 
 function isSameDayLocal(iso?: string) {
@@ -33,7 +34,7 @@ export default function IntradayPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 px-4 py-8 text-gray-900 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900 dark:text-gray-100">
       <main className="mx-auto max-w-7xl">
-        <div className="mb-6 flex items-center justify-between">
+        <div className="animate-fade-up mb-6 flex items-center justify-between">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">Intraday</p>
             <h1 className="text-3xl font-extrabold">Today&apos;s Active Predictions</h1>
@@ -47,13 +48,17 @@ export default function IntradayPage() {
         {!loading && list.length === 0 && <p className="text-sm font-semibold">No predictions available.</p>}
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {list.map((item) => {
+          {list.map((item, index) => {
             const target = Number(item.targets?.[0]?.price ?? item.entryPrice);
             const risk = Math.abs(Number(item.entryPrice) - Number(item.stopLoss));
             const reward = Math.abs(target - Number(item.entryPrice));
             const rr = risk > 0 ? `1:${(reward / risk).toFixed(2)}` : "1:0.00";
             return (
-              <article key={item._id} className="rounded-2xl border border-gray-200 bg-white p-5 shadow dark:border-gray-700 dark:bg-gray-800">
+              <article
+                key={item._id}
+                style={{ animationDelay: `${index * 70}ms` }}
+                className="animate-card-enter rounded-2xl border border-gray-200 bg-white p-5 shadow transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
+              >
                 <div className="mb-2 flex items-center justify-between">
                   <h2 className="text-xl font-bold">{item.symbol}</h2>
                   <span className="rounded bg-gray-100 px-2 py-1 text-xs font-semibold uppercase text-gray-800 dark:bg-gray-700 dark:text-gray-100">
@@ -75,8 +80,9 @@ export default function IntradayPage() {
             );
           })}
         </div>
+
+        <SelectionFramework />
       </main>
     </div>
   );
 }
-

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SelectionFramework from "@/components/intraday/SelectionFramework";
 import { fetchPredictions, type PredictionItem } from "@/lib/client/trading-api";
 
 function rr(item: PredictionItem) {
@@ -39,7 +40,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <section className="py-16 text-center">
+      <section className="animate-fade-up py-16 text-center">
         <h1 className="mb-6 text-5xl font-bold">
           Daily Intraday Research &
           <span className="text-emerald-600"> Transparency Report</span>
@@ -61,7 +62,7 @@ export default function Home() {
         {!loading && cards.length === 0 && <p className="text-sm font-semibold text-gray-600">No active predictions available.</p>}
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {cards.map((item) => {
+          {cards.map((item, index) => {
             const target = Number(item.targets?.[0]?.price ?? item.entryPrice);
             const side = item.direction === "long" ? "BUY" : "SELL";
             const sideClasses =
@@ -71,7 +72,8 @@ export default function Home() {
             return (
               <article
                 key={item._id}
-                className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
+                style={{ animationDelay: `${index * 70}ms` }}
+                className="animate-card-enter group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-700 dark:bg-slate-900"
               >
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <div>
@@ -106,6 +108,8 @@ export default function Home() {
             );
           })}
         </div>
+
+        <SelectionFramework />
       </section>
       <Footer />
     </>
